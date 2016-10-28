@@ -27,6 +27,9 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 "*****************************************************************************
 "" Plug install packages
 "*****************************************************************************
+"" Colorscheme
+Plug 'freeo/vim-kalisi'
+
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'ctrlpvim/ctrlp.vim'
@@ -147,9 +150,9 @@ set ruler
 set number
 
 let no_buffers_menu=1
-if !exists('g:not_finish_vimplug')
-  colorscheme molokai
-endif
+
+colorscheme kalisi
+set background=dark
 
 set mousemodel=popup
 set t_Co=256
