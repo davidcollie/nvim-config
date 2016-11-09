@@ -31,28 +31,18 @@ Plug 'sheerun/vim-polyglot'
 Plug 'vim-scripts/grep.vim'
 Plug 'Raimondi/delimitMate'
 Plug 'Yggdroot/indentLine'
-" Plug 'majutsushi/tagbar'
-" Plug 'scrooloose/syntastic'
 
 "" Completion
 Plug 'ervandew/supertab'
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
-" Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
-" Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 
 "" Color
 Plug 'freeo/vim-kalisi'
 
 "" Javascript Bundle
-" Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
-" Plug 'othree/yajs'
-" Plug 'mxw/vim-jsx'
 Plug 'elzr/vim-json'
 
 "" HTML Bundle
-" Plug 'amirh/HTML-AutoCloseTag'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'gorodinskiy/vim-coloresque'
 
@@ -205,8 +195,6 @@ if filereadable(expand("~/.config/nvim/local_init.vim"))
   source ~/.config/nvim/local_init.vim
 endif
 
-set autoread
-
 "*****************************************************************************
 "" Convenience variables
 "*****************************************************************************
@@ -252,39 +240,3 @@ endif
 " Same as default except that I remove the 'u' option
 set complete=.,w,b,t
 let g:SuperTabDefaultCompletionType = "context"
-
-" omnifuncs
-" augroup omnifuncs
-"   autocmd!
-"   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-"   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-"   autocmd FileType javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-"   autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-"   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-" augroup end
-
-" tern
-if exists('g:plugs["tern_for_vim"]')
-  let g:tern_show_argument_hints = 'on_hold'
-  let g:tern_show_signature_in_pum = 1
-  autocmd FileType javascript setlocal omnifunc=tern#Complete
-endif
-
-" deoplete
-" let g:deoplete#enable_at_startup = 1
-
-" if !exists('g:deoplete#omni#input_patterns')
-"   let g:deoplete#omni#input_patterns = {}
-" endif
-" autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-
-" let g:deoplete#omni#functions = {}
-" let g:deoplete#omni#functions.javascript = [
-"   \ 'tern#Complete',
-"   \ 'jspc#omni'
-" \]
-" set completeopt=longest,menuone,preview
-" let g:deoplete#sources = {}
-" let g:deoplete#sources['javascript.jsx'] = ['file', 'ternjs']
-" let g:tern#command = ['tern']
-" let g:tern#arguments = ['--persistent']
