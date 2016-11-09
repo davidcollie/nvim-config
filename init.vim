@@ -29,11 +29,10 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-scripts/grep.vim'
-Plug 'bronson/vim-trailing-whitespace'
 Plug 'Raimondi/delimitMate'
-Plug 'majutsushi/tagbar'
-" Plug 'scrooloose/syntastic'
 Plug 'Yggdroot/indentLine'
+" Plug 'majutsushi/tagbar'
+" Plug 'scrooloose/syntastic'
 
 "" Completion
 Plug 'ervandew/supertab'
@@ -46,17 +45,16 @@ Plug 'ervandew/supertab'
 Plug 'freeo/vim-kalisi'
 
 "" Javascript Bundle
-Plug 'jelera/vim-javascript-syntax'
+" Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
-Plug 'othree/yajs'
-Plug 'mxw/vim-jsx'
+" Plug 'othree/yajs'
+" Plug 'mxw/vim-jsx'
 Plug 'elzr/vim-json'
 
 "" HTML Bundle
-Plug 'amirh/HTML-AutoCloseTag'
+" Plug 'amirh/HTML-AutoCloseTag'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'gorodinskiy/vim-coloresque'
-Plug 'tpope/vim-haml'
 
 "" Include user's extra bundle
 if filereadable(expand("~/.config/nvim/local_bundles.vim"))
@@ -72,7 +70,7 @@ filetype plugin indent on
 "" Basic Setup
 "*****************************************************************************"
 "" Encoding
-set encoding=utf-8
+" set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
 
@@ -179,7 +177,11 @@ augroup vimrc-make-cmake
   autocmd BufNewFile,BufRead CMakeLists.txt setlocal filetype=cmake
 augroup END
 
-set autoread
+"" html, css, scss
+augroup vimrc-html-css
+  autocmd!
+  autocmd FileType css,html,scss set tabstop=2|set shiftwidth=2|set expandtab softtabstop=2 smartindent
+augroup END
 
 "" Include mappings
 if filereadable(expand("~/.config/nvim/mappings.vim"))
@@ -202,6 +204,8 @@ endif
 if filereadable(expand("~/.config/nvim/local_init.vim"))
   source ~/.config/nvim/local_init.vim
 endif
+
+set autoread
 
 "*****************************************************************************
 "" Convenience variables
@@ -244,6 +248,10 @@ else
   let g:airline_symbols.readonly = ''
   let g:airline_symbols.linenr = ''
 endif
+
+" Same as default except that I remove the 'u' option
+set complete=.,w,b,t
+let g:SuperTabDefaultCompletionType = "context"
 
 " omnifuncs
 " augroup omnifuncs
