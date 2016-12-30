@@ -42,6 +42,9 @@ Plug 'freeo/vim-kalisi'
 Plug 'pangloss/vim-javascript'
 Plug 'elzr/vim-json'
 
+"" Ruby Bundle
+Plug 'vim-ruby/vim-ruby'
+
 "" HTML Bundle
 Plug 'hail2u/vim-css3-syntax'
 Plug 'gorodinskiy/vim-coloresque'
