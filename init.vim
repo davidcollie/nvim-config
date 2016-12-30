@@ -34,6 +34,11 @@ Plug 'Yggdroot/indentLine'
 
 "" Completion
 Plug 'ervandew/supertab'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"" Javascript completion
+Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
 
 "" Color
 Plug 'freeo/vim-kalisi'
@@ -198,13 +203,8 @@ if filereadable(expand("~/.config/nvim/local_init.vim"))
   source ~/.config/nvim/local_init.vim
 endif
 
-"*****************************************************************************
-"" Convenience variables
-"*****************************************************************************
 " vim-airline
 let g:airline#extensions#virtualenv#enabled = 1
-
-" vim-airline
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
@@ -240,6 +240,22 @@ else
   let g:airline_symbols.linenr = ''
 endif
 
+" deoplete
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#omni#functions = {}
+let g:deoplete#omni#functions.javascript = [
+  \ 'tern#Complete',
+  \ 'jspc#omni'
+\]
+
+set completeopt=longest,menuone,preview
+let g:deoplete#sources = {}
+let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
+let g:tern#command = ['tern']
+let g:tern#arguments = ['--persistent']
+
 " Same as default except that I remove the 'u' option
 set complete=.,w,b,t
 let g:SuperTabDefaultCompletionType = "context"
+" close the preview window when you're not using it
+let g:SuperTabClosePreviewOnPopupClose = 1
